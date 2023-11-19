@@ -58,7 +58,6 @@ class MainActivity : ComponentActivity() {
             Week3Theme {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     ParkDongMin()
-
                 }
             }
         }
@@ -67,29 +66,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ParkDongMin() {
-    val openDialog = remember { mutableStateOf(false) }
     val starNumber = remember { mutableStateOf(0) }
-
-    when {
-        openDialog.value -> {
-            StarDialog(openDialog) {
-                starNumber.value = it
-                Log.e("로그", "$it")
-            }
-        }
-    }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.size(10.dp))
-
-        Button(
-            onClick = { openDialog.value = !openDialog.value }
-        ) {
-            Text(text = "설문조사 하기")
-        }
-
         Spacer(modifier = Modifier.size(10.dp))
 
         RainbowCanvas(starNumber)
